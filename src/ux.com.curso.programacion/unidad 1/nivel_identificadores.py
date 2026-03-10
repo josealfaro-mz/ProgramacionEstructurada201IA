@@ -16,4 +16,8 @@ def explicar_indetificacion():
             print("Puntos es igual a 10")
 
     #cierre nivel 1
-    
+def main():
+    explicar_indetificacion()
+
+    if __name__ == "__main__":
+        main()
