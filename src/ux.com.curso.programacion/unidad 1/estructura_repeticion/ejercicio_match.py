@@ -20,8 +20,8 @@ def demostracion():
         case _:
             print("Opcion no valida")
 
-if __name__ == "__main__":
+def main():
     demostracion()
 
-if main():
+if __name__ == "__main__":    
     main()
