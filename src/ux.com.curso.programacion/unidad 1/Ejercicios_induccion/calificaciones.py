@@ -26,6 +26,6 @@ def main():
         print(f"Estudiante {i + 1}: {calif}")
         calificacion(calif)
     print("Las calificaciones han sido procesadas.")
-        
+
 if __name__ == "__main__":
     main()
