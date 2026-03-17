@@ -1,5 +1,8 @@
 # Implementacion de Match en Python
 
+from unittest import case
+
+
 def demostracion():
     print("-- Ejercicio de dias --")
     opcion = input("Ingrese un dia de la semana (1-7):")
@@ -27,7 +30,7 @@ def demostracion():
             print("Domingo")
             print(f"Hola!, hoy es domingo")
         case _:
-            print("Dia no valido")
+            print("Dia no valido")  
 
 def main():
     demostracion()
