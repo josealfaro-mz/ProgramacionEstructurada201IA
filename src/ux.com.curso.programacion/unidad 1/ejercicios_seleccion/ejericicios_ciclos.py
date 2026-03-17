@@ -43,6 +43,7 @@ def ejemplo_do_while():
             break  # Salir del bucle si la contraseña es correcta
         else:
             print("¡Acceso denegado! Intentalo de nuevo.")
+            break
     
     print(f"Número de intentos: {intentos}")
 
