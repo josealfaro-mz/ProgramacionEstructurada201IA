@@ -2,7 +2,6 @@
 Implementar en Python el algoritmo para calcular el Factorial de un número,
  siguiendo estrictamente la lógica definida en el Diagrama de Flujo proporcionado.
 """
-
 def leer_n():
     n = int(input("Ingrese un número entero: "))
     return n
@@ -17,8 +16,7 @@ def factorial(n):
     while i >= n:
         print("El número debe ser mayor o igual a 0.")
         return None
-
-
+    
 def main():
     n = leer_n()
     resultado = factorial(n)
