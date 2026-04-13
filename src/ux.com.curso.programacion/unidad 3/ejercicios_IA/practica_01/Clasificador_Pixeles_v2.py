@@ -6,20 +6,19 @@ UMBRAL_ALTO = 0.7
 UMBRAL_BAJO = 0.3
 
 def clasificar_pixeles(intensidad):
-
     #Si la intensidad es menor a 0.0 o mayor a 1.0 es un valor invalido
     if intensidad < 0.0 or intensidad > 1.0:
         return None
 
-    if 0.0 <= intensidad <= UMBRAL_BAJO:
-        return ("(Fondo Oscuro)")
+    if intensidad <= UMBRAL_BAJO:
+        return "(Fondo Oscuro)"
 
-    if UMBRAL_BAJO < intensidad < UMBRAL_ALTO:
-        return ("Gris (Ruido)")
+    if intensidad < UMBRAL_ALTO:
+        return "Gris (Ruido)"
 
-    if intensidad >= UMBRAL_ALTO:
-         return ("Objeto (Brillante)")
-    
+    # intensidad >= UMBRAL_ALTO
+    return "Objeto (Brillante)"
+
 import os
 
 def cargar_y_procesar(nombre_archivo):
