@@ -72,13 +72,19 @@ def generar_reporte(total_datos, validos, estadisticas):
 def ejecutar_pipeline():
     datos_finales = []
     cuenta_total = 0
-    with open("lecturas_sensores.txt", "r") as f:
+    # Obtener la ruta absoluta del archivo en al misma carpeta del script
+    import os
+    ruta_script = os.path.dirname(os.path.abspath(__file__))
+    ruta_archivo = os.path.join(ruta_script, "lecturas_sensores.txt")
+
+    with open(ruta_archivo, "r") as f:
         for linea in f:
             cuenta_total += 1
-            valor = limpiar_dato(linea.strip())
-            if valor is not None:
-                # Normalizar para la IA (0-1)
-                datos_finales.append(valor / 100)
+    valor = limpiar_dato(linea.strip())
+            
+    if valor is not None:
+        # Normalizar para la IA (0-1)
+        datos_finales.append(valor / 100)
     if datos_finales:
         stats = obtener_estadisticas(datos_finales)
         generar_reporte(cuenta_total, len(datos_finales), stats)
