@@ -53,8 +53,20 @@ def generar_reporte(total_datos, validos, estadisticas):
     """
     FUNCIÓN 4: Imprime un resumen formateado de los resultados.
     """
+    v_max, v_min, v_prom = estadisticas
+    descartados = total_datos - validos
     # IMPLEMENTAR AQUÍ
-    pass
+    print("*" * 40)
+    print("Reporte de analisis predictivo")
+    print("*" * 30)
+    print(f"Total de lecturas: {total_datos}")  #f en el print para formatear la salida
+    print(f"Lecturas válidas: {validos}")
+    print(f"Lecturas descartadas: {descartados}")
+    print(f"Valor máximo: {v_max:.2f}")
+    print(f"Valor mínimo: {v_min:.2f}") #2f es para mostrar solo 2 decimales
+    print(f"Valor promedio: {v_prom:.2f}")
+    print("*" * 30)
+
  
 # --- LÓGICA PRINCIPAL (NO MODIFICAR ESTA PARTE) ---
 def ejecutar_pipeline():
