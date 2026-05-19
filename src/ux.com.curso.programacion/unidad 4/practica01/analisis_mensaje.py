@@ -40,3 +40,8 @@ def main():
 
 if __name__ == "__main__": 
     main()
+
+# ¿Qué sucede si intentas usar np.mean() sin haber hecho el import al principio del archivo?
+"""
+Daria error de tipo NameError: name 'np' is not defined
+ """
