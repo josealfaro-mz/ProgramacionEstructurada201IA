@@ -14,15 +14,20 @@ def leer_datos(productos, ventas):
 def escribir_reporte(productos, ventas):
     print("\nRESUMEN DE VENTAS")
     total_general = 0
+    total_por_producto = []
 
     for i in range(3):
         suma_producto = sum(ventas[i])
+        total_por_producto.append(suma_producto)
         total_general += suma_producto
         print(f"{productos[i]}: {ventas[i]} | Total: {suma_producto}")
 
     print(f"\nEl total de ventas de la semana es: {total_general}")
     print(f"El promedio de ventas es: {total_general / 9:.2f}")
 
+    # Producto mas vendido
+    indice_max = total_por_producto.index(max(total_por_producto))
+    print(f"El producto más vendido es: {productos[indice_max]} con {total_por_producto[indice_max]} ventas.")
 
 def main():
     productos, ventas = declarar_estructuras()
