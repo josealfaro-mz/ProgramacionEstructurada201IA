@@ -1,9 +1,9 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte III)
-Alumno: [Tu Nombre]
+Alumno: José Alberto Manzanilla Alfaro
 """
-import math  # El novato solo importó math esta vez
+import math  # se agrego math para usar fabs y no calcular el absoluto a mano
 
 # =====================================================================
 # RETO 1: Inicializador de Tablero de Juego (Matrices)
@@ -26,6 +26,17 @@ def inicializar_tablero_vacio():
             
     return tablero
 
+# se crea cada fila por separado para que no compartan la misma memoria
+# asi si cambias una celda no afecta a todas las demas filas
+def inicializar_tablero_vacio_refactorizado():
+    fila1 = [0, 0, 0, 0]
+    fila2 = [0, 0, 0, 0]
+    fila3 = [0, 0, 0, 0]
+    fila4 = [0, 0, 0, 0]
+    tablero = [fila1, fila2, fila3, fila4]
+    return tablero
+
+
 # =====================================================================
 # RETO 2: Recortador de Valores Atípicos (Clamping de Datos)
 # Sentido: Limitar las señales de los sensores del robot a un rango seguro.
@@ -43,6 +54,16 @@ def limitar_senal_sensor(valor_lectura, minimo, maximo):
             resultado = valor_lectura
             
     return resultado
+
+# se quito el if-else anidado y se puso todo en un solo nivel
+# primero se verifica si esta fuera de rango y se regresa directo
+def limitar_senal_sensor_refactorizado(valor_lectura, minimo, maximo):
+    if valor_lectura < minimo:
+        return minimo
+    if valor_lectura > maximo:
+        return maximo
+    return valor_lectura
+
 
 # =====================================================================
 # RETO 3: Buscador del Valor Más Cercano a Cero (Error Mínimo)
@@ -68,6 +89,20 @@ def buscar_error_minimo(lista_errores):
             
     return menor_error
 
+# se cambio el 999999.99 por float('inf') que es el infinito de python
+# asi no hay riesgo de que algun error sea mas grande que ese numero inventado
+# tambien se uso math.fabs() en lugar del if para calcular el valor absoluto
+def buscar_error_minimo_refactorizado(lista_errores):
+    menor_error = float('inf')  # infinito real, no un numero inventado
+    
+    for valor_actual in lista_errores:
+        absoluto = math.fabs(valor_actual)  # math.fabs hace lo mismo que el if de arriba
+        if absoluto < menor_error:
+            menor_error = absoluto
+            
+    return menor_error
+
+
 # =====================================================================
 # RETO 4: Filtro de Valores Únicos (Eliminador de Duplicados)
 # Sentido: Limpiar las IDs de los usuarios del servidor de Discord para
@@ -92,6 +127,17 @@ def depurar_usuarios_repetidos(lista_ids):
             
     return lista_limpia
 
+# se quito el doble for anidado, ahora solo se usa "in" para verificar
+# si el id ya esta en la lista antes de agregarlo, es mas corto y legible
+def depurar_usuarios_repetidos_refactorizado(lista_ids):
+    lista_limpia = []
+    
+    for id_actual in lista_ids:
+        if id_actual not in lista_limpia:  # "not in" reemplaza el segundo for
+            lista_limpia.append(id_actual)
+            
+    return lista_limpia
+
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
@@ -109,3 +155,14 @@ if __name__ == "__main__":
     
     ids_discord = [4521, 8892, 4521, 1022, 8892, 9931]
     print("Lista de IDs únicas filtradas:", depurar_usuarios_repetidos(ids_discord))
+
+    print("\n--- Probando Código Refactorizado (Parte III) ---")
+
+    tablero_ref = inicializar_tablero_vacio_refactorizado()
+    print("Tablero refactorizado de 4x4:")
+    for fila in tablero_ref:
+        print(fila)
+
+    print("Lectura recortada refactorizada:", limitar_senal_sensor_refactorizado(125.4, 0.0, 100.0))
+    print("Error mínimo refactorizado:", buscar_error_minimo_refactorizado(errores_entrenamiento))
+    print("IDs únicas refactorizadas:", depurar_usuarios_repetidos_refactorizado(ids_discord))
