@@ -1,7 +1,7 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte II)
-Alumno: [Tu Nombre]
+Alumno: José Alberto Manzanilla Alfaro
 """
 import random  # Única librería importada por el novato
 
@@ -40,6 +40,13 @@ def limpiar_nombre_usuario(nombre_sucio):
             resto_cadena += caracter
             
         return primera_letra + resto_cadena
+    return ""
+
+def limpiar_nombre_usuario_mejorado(nombre_sucio):
+    # Solución mejorada usando métodos de cadena integrados
+    nombre_limpio = nombre_sucio.strip()  # Elimina espacios al inicio y al final
+    if len(nombre_limpio) > 0:
+        return nombre_limpio[0].upper() + nombre_limpio[1:].lower()  # Formatea la primera letra y el resto
     return ""
 
 # =====================================================================
@@ -113,7 +120,7 @@ def calcular_mediana_latencia(lista_pings):
 if __name__ == "__main__":
     print("--- Probando Código Inicial (Parte II) ---")
     
-    print("Usuario limpio:", [limpiar_nombre_usuario("   luNA_eDUaRDo  ")])
+    print("Usuario limpio:", [limpiar_nombre_usuario_mejorado("   luNA_eDUaRDo  ")])
     
     msg = "No digas malas palabras en este servidor"
     print("¿Tiene groserías?:", contiene_palabra_bloqueada(msg, "malas"))
