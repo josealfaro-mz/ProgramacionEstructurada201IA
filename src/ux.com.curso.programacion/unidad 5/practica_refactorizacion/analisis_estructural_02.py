@@ -145,8 +145,9 @@ if __name__ == "__main__":
     
     msg = "No digas malas palabras en este servidor"
     print("¿Tiene groserías?:", contiene_palabra_bloqueada(msg, "malas"))
-    
+    print("¿Tiene groserías? (Mejorado):", contiene_palabra_bloqueada_mejorado(msg, "malas"))
     print("Clave generada por el sistema:", generar_clave_temporal())
-    
+    print("Clave generada por el sistema (Mejorado):", generar_clave_temporal_mejorado())
     pings_servidor = [120, 45, 80, 23, 150, 62]
     print("Mediana de latencia encontrada:", calcular_mediana_latencia(pings_servidor))
+    print("Mediana de latencia encontrada (Mejorado):", calcular_mediana_latencia_mejorado(pings_servidor))
