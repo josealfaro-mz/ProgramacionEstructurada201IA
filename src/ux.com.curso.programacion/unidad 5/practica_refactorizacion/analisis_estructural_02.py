@@ -125,6 +125,17 @@ def calcular_mediana_latencia(lista_pings):
         mitad2 = pings_ordenados[n // 2]
         return (mitad1 + mitad2) / 2.0
 
+def calcular_mediana_latencia_mejorado(lista_pings):
+    # Solución mejorada usando la función sorted para ordenar y calcular la mediana de forma más eficiente
+    pings_ordenados = sorted(lista_pings)
+    n = len(pings_ordenados)
+    
+    if n % 2 == 1:
+        return pings_ordenados[n // 2]
+    else:
+        mitad1 = pings_ordenados[(n // 2) - 1]
+        mitad2 = pings_ordenados[n // 2]
+        return (mitad1 + mitad2) / 2.0
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
