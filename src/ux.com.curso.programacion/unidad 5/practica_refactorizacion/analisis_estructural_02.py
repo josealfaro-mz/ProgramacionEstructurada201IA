@@ -70,6 +70,10 @@ def contiene_palabra_bloqueada(mensaje_chat, palabra_prohibida):
             
     return False
 
+def contiene_palabra_bloqueada_mejorado(mensaje_chat, palabra_prohibida):
+    # Solución mejorada usando el operador 'in' para verificar la presencia de la palabra
+    return palabra_prohibida in mensaje_chat
+
 # =====================================================================
 # RETO 3: Generador de Contraseñas Temporales para Nuevos Usuarios
 # Sentido: Asignar una clave alfanumérica segura al registrar un agente.
