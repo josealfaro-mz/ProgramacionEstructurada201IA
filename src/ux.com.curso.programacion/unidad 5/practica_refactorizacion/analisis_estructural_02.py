@@ -91,6 +91,12 @@ def generar_clave_temporal():
         
     return clave_generada
 
+def generar_clave_temporal_mejorado():
+    caracteres_validos = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"
+    # Solución mejorada usando una comprensión de lista y el método join para concatenar eficientemente
+    clave_generada = ''.join(random.choice(caracteres_validos) for _ in range(8))
+    return clave_generada
+
 # =====================================================================
 # RETO 4: Buscador del Valor Central (Mediana de Latencia de Red)
 # Sentido: Encontrar el punto medio de ping (ms) para evaluar lag.
