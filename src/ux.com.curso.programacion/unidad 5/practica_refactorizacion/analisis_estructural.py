@@ -1,9 +1,10 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código
-Alumno: [Tu Nombre]
+Alumno: José Alberto Manzanilla Alfaro
 """
 import random  # Única librería importada por el novato
+import math
 
 # =====================================================================
 # RETO 1: El Teorema de Fermat
@@ -17,6 +18,14 @@ def verificar_fermat(a, b, c):
             print("¡Fermat se equivocó!")
         else:
             print("No, esa combinación no funciona.")
+
+def verificar_fermat_refactorizado(a, b, c, n):
+    if n>2:
+        if math.pow(a, n) + math.pow(b, n) == math.pow(c, n):
+            print("Fermat se equivocó!")
+        else:
+            print("No, esa combinación no funciona.")
+
 
 # =====================================================================
 # RETO 2: Distancia Euclidiana entre dos puntos (Agente e IA)
@@ -33,6 +42,14 @@ def calcular_distancia(x1, y1, x2, y2):
     # Intento manual de sacar raíz cuadrada elevando a la 0.5
     distancia = suma_cuadrados ** 0.5 
     return distancia
+
+def calcular_distancia_refactorizado(x1, y1, x2, y2):
+    return math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+
+def calcular_distancia_refactorizado_v2(x1, y1, x2, y2):
+    return math.hypot(x2 - x1, y2 - y1) #Funcion especifica para distancia entre puntos en 2D, mas eficiente y legible
+
+
 
 # =====================================================================
 # RETO 3: Selector Aleatorio de Respuestas para el Bot
@@ -51,6 +68,15 @@ def obtener_saludo_agente():
         return "Sistemas en línea. Monitoreando el servidor."
     elif opcion == 4:
         return "Hola humano, procesando tus peticiones."
+    
+def obtener_saludo_agente_refactorizado():
+    saludos = [
+        "Hola, soy el agente de IA. ¿En qué ayudo?",
+        "¡Conexión establecida! Listo para operar.",
+        "Sistemas en línea. Monitoreando el servidor.",
+        "Hola humano, procesando tus peticiones."
+    ]
+    return random.choice(saludos)
 
 # =====================================================================
 # RETO 4: Clasificador de Alertas Críticas (Validación de Rangos)
@@ -77,6 +103,10 @@ def evaluar_error_sistema(valor_loss):
 if __name__ == "__main__":
     print("--- Probando Código Inicial ---")
     verificar_fermat(3, 4, 5)
+    verificar_fermat_refactorizado(3, 4, 5, 4)
     print("Distancia calculada:", calcular_distancia(0, 0, 3, 4))
+    print("Distancia refactorizada:", calcular_distancia_refactorizado(0, 0, 3, 4))
+    print("Distancia refactorizada v2:", calcular_distancia_refactorizado_v2(0, 0, 3, 4))
     print("Respuesta bot:", obtener_saludo_agente())
+    print("Respuesta bot refactorizada:", obtener_saludo_agente_refactorizado())
     print("Estado del log:", evaluar_error_sistema(0.85))
